@@ -1,0 +1,57 @@
+.networkRightFeed {
+  padding: 0 25px;
+}
+.networkRightFeed__card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.networkRightFeed__card__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  /* border-bottom: 1px solid var(--border-color); */
+  font-weight: 500;
+}
+.networkRightFeed__card__headerOption {
+  cursor: pointer;
+  color: var(--brand-gray-color);
+}
+.networkRightFeed__card__requestWrapper {
+  display: grid;
+  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  grid-template-columns: 10% 60% 30%;
+  padding: 15px 5px;
+}
+.networkRightFeed__card__requestAvatar {
+  margin: auto;
+}
+.networkRightFeed__card__requestBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.networkRightFeed__card__requestBtn button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: transparent;
+  cursor: pointer;
+}
+.ignoreBtn {
+  border: none;
+  color: var(--brand-gray-color);
+}
+.acceptBtn {
+  border: 2px solid var(--color-brand);
+  color: var(--color-brand);
+  border-radius: 25px;
+}
+.networkRightFeed__suggestionCardWrapper {
+  width: 100%;
+  display: grid;
+  padding: 5px;
+  grid-template-columns: 25% 25% 25% 25%;
+}

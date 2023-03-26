@@ -1,0 +1,37 @@
+.networkSuggestionCard {
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+.networkSuggestionCard:hover {
+  box-shadow: 0 2px 3px 3px var(--box-shadow-color);
+}
+.networkSuggestionCard__connectBtn button {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--color-brand);
+  justify-content: center;
+  color: var(--color-brand);
+  border-radius: 25px;
+  width: 100%;
+  font-weight: 600;
+  cursor: pointer;
+}
+.networkSuggestionCard__bgImg {
+  width: 100%;
+}
+.networkSuggestionCard__avatar {
+  position: relative;
+  bottom: 20px;
+}
+.networkSuggestionCard__bgImg img {
+  height: auto;
+  width: 100%;
+}
+.networkSuggestionCard__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

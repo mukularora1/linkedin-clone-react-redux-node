@@ -1,0 +1,81 @@
+.signIn__body {
+  margin-top: 20px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.signIn__body__right {
+  max-width: 100%;
+  height: 80vh;
+}
+.signIn__body__left {
+  display: flex;
+  justify-content: center;
+}
+.signIn__form {
+  width: 60%;
+}
+.signIn__form__title {
+  width: 100%;
+  color: var(--brand-gray-color);
+  font-weight: 400;
+  font-size: 3vw;
+}
+.signIn__formWrapper {
+  width: 100%;
+}
+.signIn__formOption {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.signIn__formOption label {
+  width: 100%;
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--brand-gray-color);
+}
+.signIn__formOption input {
+  height: 40px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.forgot-password {
+  color: var(--color-brand);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 10px 0;
+  cursor: pointer;
+  width: fit-content;
+}
+.signIn__formButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signIn__formSignInBtn,
+.signIn__formJoinInBtn,
+.signIn__formGoogleSignInBtn {
+  width: 100%;
+  height: 8vh;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: transparent;
+  /* background-color: transparent; */
+  border-radius: 40px;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.signIn__formJoinInBtn {
+  border: 1px solid var(--brand-gray-color);
+}
+.signIn__formGoogleSignInBtn {
+  border: 1px solid var(--border-color);
+}
+.signIn__formSignInBtn {
+  color: #fff;
+  background-color: var(--color-brand);
+}

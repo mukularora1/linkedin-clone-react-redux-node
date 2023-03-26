@@ -1,0 +1,18 @@
+.rightSideWidget {
+  flex: 0.2;
+  border: 0.1px solid var(--border-color);
+  background-color: var(--bg-card);
+  border-radius: 10px;
+  padding: 10px;
+}
+.rightSideWidget__header .rightSideWidget__title {
+  font-weight: 600;
+}
+.rightSideWidget__list__wrapper {
+  margin: 5px;
+}
+.rightSideWidget__list ul {
+  list-style: disc;
+  color: var(--brand-gray-color);
+  padding: 15px;
+}

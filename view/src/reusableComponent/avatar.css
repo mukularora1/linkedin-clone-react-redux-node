@@ -1,0 +1,12 @@
+.avatar {
+  border-radius: 50% !important;
+  /* width: 50px;
+    height: 50px; */
+  margin: 2px;
+}
+.avatar__img {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  width: 100%;
+  border-radius: 50%;
+}
