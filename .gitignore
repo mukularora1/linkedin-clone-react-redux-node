@@ -2,4 +2,3 @@ node_modules/
 package-lock.json
 view/node_modules/
 view/package-lock.json
-.env

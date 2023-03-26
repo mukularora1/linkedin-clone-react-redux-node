@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   value: [],
-  status: "idle",
+  status: 'idle',
 };
 const postSlice = createSlice({
-  name: "postSlice",
+  name: 'postSlice',
   initialState: initialState,
   reducers: {
     setPostArr: (state, action) => {
