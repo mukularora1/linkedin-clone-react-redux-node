@@ -1,24 +1,24 @@
-import React from "react";
-import SignInPage from "../layout/signIn/SignInPage";
-import Network from "../network/Network";
-import Error from "../pages/Error";
-import Home from "../pages/Home";
+import React from 'react';
+import SignInPage from '../layout/signIn/SignInPage';
+import Network from '../network/Network';
+import Error from '../pages/Error';
+import Home from '../pages/Home';
 const MainRoutes = [
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/network",
+    path: '/network',
     element: <Network />,
   },
   {
-    path: "/jobs",
+    path: '/signin',
     element: <SignInPage />,
   },
 
   {
-    path: "*",
+    path: '*',
     element: <Error />,
   },
 ];

@@ -79,3 +79,17 @@
   color: #fff;
   background-color: var(--color-brand);
 }
+.signIn__formOption div {
+  display: flex;
+  justify-content: end;
+}
+.showBtn {
+  width: fit-content;
+  color: var(--color-brand);
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  position: relative;
+  bottom: 40px;
+  cursor: pointer;
+}
