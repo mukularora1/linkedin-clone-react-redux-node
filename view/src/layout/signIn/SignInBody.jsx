@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SignInImg from '../../assets/SignInImg';
 import { contactRegex, emailRegex, passwordRegex } from '../../regex';
 import './signInBody.css';
@@ -121,9 +122,18 @@ function SignInBody() {
               <button className="signIn__formGoogleSignInBtn">
                 Sign in with google
               </button>
-              <button className="signIn__formJoinInBtn">
-                New to linkedIn? Join now
-              </button>
+              <Link
+                to="/signup"
+                style={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  width: '100%',
+                }}
+              >
+                <button className="signIn__formJoinInBtn">
+                  New to linkedIn? Join now
+                </button>
+              </Link>
             </div>
           </form>
         </div>

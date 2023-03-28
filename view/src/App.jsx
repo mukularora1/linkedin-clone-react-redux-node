@@ -1,12 +1,18 @@
+import { useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './header/Header';
-// import Home from "./pages/Home";
-import { useLocation } from 'react-router-dom';
 import Routes from './routes/index';
+
 function App() {
+  const location = useLocation();
+
   return (
     <div className="app">
-      {useLocation().pathname === '/signin' ? '' : <Header />}
+      {location.pathname === '/signin' || location.pathname === '/signup' ? (
+        ''
+      ) : (
+        <Header />
+      )}
       <Routes />
     </div>
   );
