@@ -1,3 +1,7 @@
+.signUp__header {
+  margin-left: 100px;
+  margin-top: 30px;
+}
 .signUp {
   display: flex;
   min-height: 100vh;
@@ -32,7 +36,6 @@
 .joinButton,
 .googleButton {
   height: 50px;
-
   font-size: large;
   font-weight: 600;
 
@@ -48,8 +51,14 @@
 .googleButton {
   background-color: transparent;
   border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-hr {
+.googleButton svg {
+  margin: 0 10px;
+}
+.signUp__form hr {
   margin: 20px 0;
 }
 .signUp__or {
@@ -68,4 +77,5 @@ hr {
 .privacy-policy {
   margin: 10px 0;
   text-align: center;
+  color: var(--brand-gray-color);
 }

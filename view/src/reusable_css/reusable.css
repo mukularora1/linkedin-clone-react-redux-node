@@ -22,3 +22,8 @@
 .b {
   border: 1px solid black;
 }
+.blue-link {
+  color: var(--color-brand) !important;
+  cursor: pointer;
+  font-weight: 500 !important;
+}
