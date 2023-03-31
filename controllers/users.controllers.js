@@ -1,4 +1,6 @@
 const users = require('../models/users.models.js');
+var bcrypt = require('bcryptjs');
+
 exports.createUserAccount = async (req, res) => {
   // Validate request
   if (!req.body) {
@@ -6,7 +8,12 @@ exports.createUserAccount = async (req, res) => {
       message: 'Content can not be empty!',
     });
   }
-  users.createUserAccount(req.body, (err, data) => {
+  const password = await bcrypt.hash(req.body.password, 10);
+  let userData = {
+    ...req.body,
+    password: password,
+  };
+  users.createUserAccount(userData, (err, data) => {
     if (err)
       res.status(500).send({
         message:

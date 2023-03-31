@@ -1,8 +1,9 @@
 const sql = require('./db.js');
+
 const user = function (data) {
   this.email = data.email;
   this.phone_number = data.phone_number;
-  this.password = data.width;
+  this.password = data.password;
   this.created_at = data.height;
   this.updated_at = data.unit;
 };
@@ -20,3 +21,4 @@ user.createUserAccount = (data, result) => {
     });
   });
 };
+module.exports = user;

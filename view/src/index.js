@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -9,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-
+axios.defaults.baseURL = 'http://localhost:4000/api/';
 root.render(
   <React.StrictMode>
     <Provider store={store}>

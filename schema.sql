@@ -11,5 +11,6 @@ CREATE TABLE `db_linkedin`.`users` (
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
-
+ALTER TABLE `users` CHANGE `created_at` `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `users` CHANGE `phone_number` `phone_number` BIGINT NULL DEFAULT NULL;
 ----------------------------------------------------------------------------------------------------------------------------

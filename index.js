@@ -41,4 +41,6 @@ app.use(history());
 require('./routes/users.routes')(app);
 
 // start server
-app.listen(process.env.PORT, () => console.log(`Server started on port 4000`));
+app.listen(process.env.PORT, () =>
+  console.log(`Server started on port ${process.env.PORT}`)
+);
