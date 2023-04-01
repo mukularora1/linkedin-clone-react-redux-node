@@ -1,7 +1,7 @@
 {
   "name": "linked-in-clone",
   "version": "1.0.0",
-  "description": "This is my linkedIn clone which is using react, redux, nodejs, exoress, mysql",
+  "description": "This is my linkedIn clone which is using react, redux, nodejs, express, mysql",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -77,7 +77,7 @@ function SignUp() {
             />
             {error.email !== '' ? (
               <div>
-                <p>{error.email}</p>
+                <p className="error">{error.email}</p>
               </div>
             ) : (
               ''
@@ -96,7 +96,7 @@ function SignUp() {
             </div>
             {error.password !== '' ? (
               <div>
-                <p>{error.password}</p>
+                <p className="error">{error.password}</p>
               </div>
             ) : (
               ''

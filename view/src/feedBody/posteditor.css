@@ -13,7 +13,9 @@
 .postEditor__upper__inputBox {
   outline: none;
   height: 50px;
-  width: 100%;
+  width: 90%;
+  padding-left: 25px;
+  font-size: large;
   border: 0.1px solid var(--bg-header-bottom-border);
   border-radius: 25px;
 }

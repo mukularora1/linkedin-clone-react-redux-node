@@ -27,3 +27,6 @@
   cursor: pointer;
   font-weight: 500 !important;
 }
+.error {
+  color: red;
+}

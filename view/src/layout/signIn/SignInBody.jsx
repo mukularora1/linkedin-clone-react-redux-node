@@ -87,7 +87,7 @@ function SignInBody() {
             </div>
             {error.email !== '' ? (
               <div>
-                <p>{error.email}</p>
+                <p className="error">{error.email}</p>
               </div>
             ) : (
               ''
@@ -107,7 +107,7 @@ function SignInBody() {
               </div>
               {error.password !== '' ? (
                 <div>
-                  <p>{error.password}</p>
+                  <p className="error">{error.password}</p>
                 </div>
               ) : (
                 ''
