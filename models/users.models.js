@@ -21,4 +21,23 @@ user.createUserAccount = (data, result) => {
     });
   });
 };
+user.signIn = (data, result) => {
+  sql.query(
+    `select id,email,password,phone_number from users where ${
+      data.email ? 'email' : 'phone_number'
+    } = ? `,
+    data.email,
+    (err, res) => {
+      if (err) {
+        console.log('error: ', err);
+        result(err, null);
+        return;
+      }
+      console.log('->', res);
+      result(null, {
+        ...res,
+      });
+    }
+  );
+};
 module.exports = user;

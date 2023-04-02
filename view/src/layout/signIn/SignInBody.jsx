@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import SignInImg from '../../assets/SignInImg';
 import { contactRegex, emailRegex, passwordRegex } from '../../regex';
 import './signInBody.css';
@@ -9,7 +11,7 @@ function SignInBody() {
   const [emailOrNumber, setEmailOrNumber] = useState('');
   const [error, setError] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   const validateForm = () => {
     if (emailOrNumber === '') {
       setError((prevState) => ({
@@ -43,14 +45,22 @@ function SignInBody() {
     return true;
   };
 
-  const signIn = (e) => {
+  const signIn = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       const credentials = {
         password,
-        [emailRegex.test(emailOrNumber) ? 'email' : 'number']: emailOrNumber,
+        [emailRegex.test(emailOrNumber) ? 'email' : 'phone_number']:
+          emailOrNumber,
       };
-      console.log(credentials); // Replace with actual sign in logic
+      const response = await axios.post('sign-in', credentials);
+      console.log(response.data[0]);
+      if (response.data[0]) {
+        if (response.data[0].is_auth) {
+          navigate('/');
+        }
+      }
+      console.log(response); // Replace with actual sign in logic
     }
   };
 

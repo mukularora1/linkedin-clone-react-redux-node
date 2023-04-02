@@ -13,4 +13,7 @@ CREATE TABLE `db_linkedin`.`users` (
 );
 ALTER TABLE `users` CHANGE `created_at` `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE `users` CHANGE `phone_number` `phone_number` BIGINT NULL DEFAULT NULL;
+ALTER TABLE `users` ADD UNIQUE (`email`);
+ALTER TABLE `users` ADD UNIQUE (`phone_number`);
+
 ----------------------------------------------------------------------------------------------------------------------------
