@@ -33,10 +33,13 @@ user.signIn = (data, result) => {
         result(err, null);
         return;
       }
-      console.log('->', res);
-      result(null, {
-        ...res,
-      });
+      if (res.length == 0) {
+        result(null, { errorStatus: 'userNotExist' });
+      } else {
+        result(null, {
+          ...res,
+        });
+      }
     }
   );
 };
