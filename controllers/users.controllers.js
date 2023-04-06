@@ -55,13 +55,9 @@ exports.signIn = async (req, res) => {
           if (result) {
             data[0].token = token;
             data[0].is_auth = true;
-            // the passwords match
             res.send(data);
           } else {
             res.send({ errorStatus: 'passwordIncorrect' });
-            // res.status(401).send({
-            //   message: 'Invalid password.',
-            // });
           }
         });
       }

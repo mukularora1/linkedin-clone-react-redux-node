@@ -15,5 +15,7 @@ ALTER TABLE `users` CHANGE `created_at` `created_at` DATETIME NOT NULL DEFAULT C
 ALTER TABLE `users` CHANGE `phone_number` `phone_number` BIGINT NULL DEFAULT NULL;
 ALTER TABLE `users` ADD UNIQUE (`email`);
 ALTER TABLE `users` ADD UNIQUE (`phone_number`);
-
+ALTER TABLE `users` ADD `display_picture_url` VARCHAR(255) NULL DEFAULT NULL AFTER `password`;
+ALTER TABLE `users` ADD `background_image_url` VARCHAR(255) NULL DEFAULT NULL AFTER `display_picture_url`;
+ALTER TABLE `users` ADD `name` VARCHAR(255) NULL DEFAULT NULL AFTER `id`;
 ----------------------------------------------------------------------------------------------------------------------------

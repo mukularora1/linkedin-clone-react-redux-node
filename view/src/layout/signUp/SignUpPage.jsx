@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GoogleLogo from '../../assets/GoogleLogo';
 import LinkedInFullLogo from '../../assets/LinkedInFullLogo';
 import { contactRegex, emailRegex, passwordRegex } from '../../regex';
@@ -9,6 +10,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const toggleShowPassword = () => {
     setShowPassword((e) => !e);
   };
@@ -53,8 +55,9 @@ function SignUp() {
           emailOrNumber,
       };
       const response = await axios.post('create-user-account', credentials);
-      if (response.statusText === 'ok' && response.data) {
-        console.log();
+      console.log(response.statusText);
+      if (response.statusText === 'OK' && response.data) {
+        navigate('/profile-setup');
       }
     }
   };
