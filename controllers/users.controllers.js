@@ -39,12 +39,10 @@ exports.signIn = async (req, res) => {
           err.message || 'Some error occurred while creating the Entity.',
       });
     } else {
-      console.log(data.status);
       if (data.errorStatus) {
         res.send({ errorStatus: data.errorStatus });
       } else {
         const token = jwt.sign({ userId: data[0].id }, 'your_secret_key_here');
-        console.log(token);
         bcrypt.compare(req.body.password, data[0].password, (err, result) => {
           if (err) {
             console.log('error:', err);

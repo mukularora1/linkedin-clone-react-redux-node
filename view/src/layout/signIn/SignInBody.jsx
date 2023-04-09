@@ -1,13 +1,14 @@
-import axios from 'axios';
-// import jwt_decode from 'jsonwebtoken';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import SignInImg from '../../assets/SignInImg';
+import { signIn } from '../../features/user/userSlice';
 import { contactRegex, emailRegex, passwordRegex } from '../../regex';
 import './signInBody.css';
 
 function SignInBody() {
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
   const [emailOrNumber, setEmailOrNumber] = useState('');
   const [error, setError] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -45,47 +46,39 @@ function SignInBody() {
     return true;
   };
 
-  const signIn = async (e) => {
+  const signInUser = async (e) => {
     const status = {
       userNotExist:
         'User not exist ! please enter correct email or phone number',
       passwordIncorrect: 'Entered password is incorrect',
     };
-    e.preventDefault();
     if (validateForm()) {
       const credentials = {
         password,
         [emailRegex.test(emailOrNumber) ? 'email' : 'phone_number']:
           emailOrNumber,
       };
-      const response = await axios.post('sign-in', credentials);
-      console.log('l', response.data.errorStatus);
-      if (response.data.errorStatus) {
-        if (response.data.errorStatus === 'userNotExist') {
+      const response = await dispatch(signIn(credentials));
+      if (response.payload.errorStatus) {
+        if (response.payload.errorStatus === 'userNotExist') {
           setError((pre) => {
             return { ...pre, email: status.userNotExist };
           });
         }
-        if (response.data.errorStatus === 'passwordIncorrect') {
+        if (response.payload.errorStatus === 'passwordIncorrect') {
           setError((pre) => {
             return { ...pre, password: status.passwordIncorrect };
           });
         }
         return;
       } else {
-        if (response.data[0]) {
-          if (response.data[0].is_auth) {
-            console.log(response.data[0]);
-            localStorage.setItem('user', JSON.stringify(response.data[0]));
-            // const secretKey = 'your_secret_key_here';
-            // const decodedToken = jwt_decode(response.data[0].token, secretKey);
-            // localStorage.setItem('id', decodedToken);
+        if (response.payload[0]) {
+          if (response.payload[0].is_auth) {
+            localStorage.setItem('user', JSON.stringify(response.payload[0]));
             navigate('/');
           }
         }
       }
-
-      console.log(response); // Replace with actual sign in logic
     }
   };
 
@@ -150,7 +143,7 @@ function SignInBody() {
             </div>
             <p className="forgot-password">Forgot password ?</p>
             <div className="signIn__formButtonWrapper">
-              <button className="signIn__formSignInBtn" onClick={signIn}>
+              <button className="signIn__formSignInBtn" onClick={signInUser}>
                 Sign In
               </button>
               <div>or</div>

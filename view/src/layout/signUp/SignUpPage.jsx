@@ -55,7 +55,6 @@ function SignUp() {
           emailOrNumber,
       };
       const response = await axios.post('create-user-account', credentials);
-      console.log(response.statusText);
       if (response.statusText === 'OK' && response.data) {
         navigate('/profile-setup');
       }
