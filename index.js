@@ -39,6 +39,7 @@ app.use(history());
 
 // set up routes
 require('./routes/users.routes')(app);
+require('./routes/helpers.routes')(app);
 
 // start server
 app.listen(process.env.PORT, () =>

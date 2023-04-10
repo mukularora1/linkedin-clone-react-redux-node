@@ -19,3 +19,10 @@ ALTER TABLE `users` ADD `display_picture_url` VARCHAR(255) NULL DEFAULT NULL AFT
 ALTER TABLE `users` ADD `background_image_url` VARCHAR(255) NULL DEFAULT NULL AFTER `display_picture_url`;
 ALTER TABLE `users` ADD `name` VARCHAR(255) NULL DEFAULT NULL AFTER `id`;
 ----------------------------------------------------------------------------------------------------------------------------
+--Dev : Mukul Arora
+--Task : upload images to folder for profile picture and background image
+--Date : 10-04-2023
+
+--> create a dir in root of projects : uploads
+--> create a dir name 'profile_img' : uploads/profile_img for profile image uploads
+--> create a dir name ' background_img' : uploads/background_img for background of profile
