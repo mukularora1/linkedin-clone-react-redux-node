@@ -6,4 +6,7 @@ module.exports = (app) => {
 
   // create user account
   app.post('/api/sign-in', users.signIn);
+
+  // upload image url
+  app.post('/api/upload-profile-img', users.uploadProfileImg);
 };

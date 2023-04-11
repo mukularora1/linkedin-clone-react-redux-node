@@ -43,4 +43,20 @@ user.signIn = (data, result) => {
     }
   );
 };
+user.uploadProfileImg = (data, result) => {
+  console.log('*****', data);
+  sql.query(
+    `UPDATE users set display_picture_url = ? where id = ? `,
+    [data.img_url, data.userId],
+    (err, res) => {
+      if (err) {
+        console.log('error: ', err);
+        result(null, err);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
+
 module.exports = user;

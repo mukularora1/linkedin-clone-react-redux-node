@@ -62,3 +62,12 @@ exports.signIn = async (req, res) => {
     }
   });
 };
+exports.uploadProfileImg = (req, res) => {
+  users.uploadProfileImg(req.body, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || 'Some error occurred while retrieving shape.',
+      });
+    else res.send(data);
+  });
+};
