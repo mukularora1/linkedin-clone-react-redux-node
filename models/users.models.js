@@ -58,5 +58,19 @@ user.uploadProfileImg = (data, result) => {
     }
   );
 };
+user.uploadUserName = (data, result) => {
+  sql.query(
+    `UPDATE users set name = ? where id = ? `,
+    [data.name, data.userId],
+    (err, res) => {
+      if (err) {
+        console.log('error: ', err);
+        result(null, err);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
 
 module.exports = user;

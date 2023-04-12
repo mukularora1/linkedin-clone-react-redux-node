@@ -71,3 +71,12 @@ exports.uploadProfileImg = (req, res) => {
     else res.send(data);
   });
 };
+exports.uploadUserName = (req, res) => {
+  users.uploadUserName(req.body, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || 'Some error occurred while retrieving shape.',
+      });
+    else res.send(data);
+  });
+};

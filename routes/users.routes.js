@@ -9,4 +9,7 @@ module.exports = (app) => {
 
   // upload image url
   app.post('/api/upload-profile-img', users.uploadProfileImg);
+
+  // upload user name
+  app.post('/api/upload-user-name', users.uploadUserName);
 };

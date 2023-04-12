@@ -1,5 +1,5 @@
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import { Button } from '@mui/material';
+
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import defaultBG from '../../assets/defaultBG.jpg';
@@ -10,7 +10,6 @@ import './profileSetup.css';
 
 function ProfileSetup() {
   const [profileImage, setProfileImage] = useState(null);
-  const [isNextClicked, setNextClicked] = useState(false);
   const [bgImg, setBgImg] = useState(null);
   const bgImageFileInputRef = useRef(null);
   const dpFileInputRef = useRef(null);
@@ -34,7 +33,6 @@ function ProfileSetup() {
     event.preventDefault();
     const formData = new FormData();
     formData.append('file', profileImage);
-    // formData.append('file', bgImg);
     const res = await uploadFile(formData, {
       dir: 'uploads/profile_img',
       supportedType: JSON.stringify([
@@ -54,12 +52,9 @@ function ProfileSetup() {
       console.log('tehrerererr');
     }
   };
-  const nextClicked = () => {
-    setNextClicked((pre) => !pre);
-  };
   return (
     <div className="profileSetup">
-      {isNextClicked ? (
+      {user.isNextClicked ? (
         <form className="profileSetup__card" onSubmit={handleSubmit}>
           <div className="profileSetup__cardWrapper">
             <div className="profileSetup__card__bgImg">
@@ -154,8 +149,6 @@ function ProfileSetup() {
           <ProfileSetupForm />
         </div>
       )}
-
-      <Button onClick={nextClicked}>Save and Next</Button>
     </div>
   );
 }
