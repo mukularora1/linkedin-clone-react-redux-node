@@ -44,10 +44,10 @@ user.signIn = (data, result) => {
   );
 };
 user.uploadProfileImg = (data, result) => {
-  console.log('*****', data);
+  console.log('*****', data.img_url.path, data.bgImgUrl.path, data.userId);
   sql.query(
-    `UPDATE users set display_picture_url = ? where id = ? `,
-    [data.img_url, data.userId],
+    `UPDATE users set display_picture_url = ?, background_image_url=? where id = ? `,
+    [data.img_url.path, data.bgImgUrl.path, data.userId],
     (err, res) => {
       if (err) {
         console.log('error: ', err);
@@ -71,6 +71,18 @@ user.uploadUserName = (data, result) => {
       result(null, res);
     }
   );
+};
+user.getAllUserData = (data, result) => {
+  console.log(typeof data.userId);
+  sql.query(`SELECT * FROM users where id = ? `, data.userId, (err, res) => {
+    if (err) {
+      console.log('error: ', err);
+      result(null, err);
+      return;
+    }
+    console.log(res);
+    result(null, res);
+  });
 };
 
 module.exports = user;

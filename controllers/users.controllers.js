@@ -66,7 +66,7 @@ exports.uploadProfileImg = (req, res) => {
   users.uploadProfileImg(req.body, (err, data) => {
     if (err)
       res.status(500).send({
-        message: err.message || 'Some error occurred while retrieving shape.',
+        message: err.message || 'Some error occurred while uploading images.',
       });
     else res.send(data);
   });
@@ -75,7 +75,17 @@ exports.uploadUserName = (req, res) => {
   users.uploadUserName(req.body, (err, data) => {
     if (err)
       res.status(500).send({
-        message: err.message || 'Some error occurred while retrieving shape.',
+        message: err.message || 'Some error occurred while uploading name.',
+      });
+    else res.send(data);
+  });
+};
+exports.getAllUserData = (req, res) => {
+  users.getAllUserData(req.body, (err, data) => {
+    console.log(data);
+    if (err)
+      res.status(500).send({
+        message: err.message || 'Some error occurred while getting user data.',
       });
     else res.send(data);
   });

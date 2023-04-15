@@ -12,4 +12,7 @@ module.exports = (app) => {
 
   // upload user name
   app.post('/api/upload-user-name', users.uploadUserName);
+
+  // get user data
+  app.post('/api/get-all-user-data', users.getAllUserData);
 };

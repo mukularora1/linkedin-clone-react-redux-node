@@ -2,6 +2,7 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import defaultBG from '../../assets/defaultBG.jpg';
 import { selectUser, uploadProfileImg } from '../../features/user/userSlice';
 import { uploadFile } from '../../helpers/fileRequest.helper';
@@ -14,6 +15,7 @@ function ProfileSetup() {
   const bgImageFileInputRef = useRef(null);
   const dpFileInputRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector(selectUser);
   const handleFileInputClick = () => {
     bgImageFileInputRef.current.click();
@@ -29,29 +31,100 @@ function ProfileSetup() {
     setProfileImage(event.target.files[0]);
   };
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   if (profileImage && bgImg) {
+  //     console.log(profileImage, bgImg);
+
+  //     const formData = new FormData();
+  //     formData.append('file', profileImage);
+  //     const res = await uploadFile(formData, {
+  //       dir: 'uploads/profile_img',
+  //       supportedType: JSON.stringify([
+  //         'image/png',
+  //         'image/jpg',
+  //         'image/jpeg',
+  //         'image/svg+xml',
+  //       ]),
+  //     });
+  //     console.log(res);
+  //     if (res.status === 'success') {
+  //       const response = await dispatch(
+  //         uploadProfileImg({ img_url: res.path, userId: user.userId })
+  //       );
+  //       if (response.meta.requestStatus === 'fulfilled') {
+  //         formData.delete('file');
+  //         formData.append('file', bgImg);
+  //         const bgImgUploadRes = await uploadFile(formData, {
+  //           dir: 'uploads/background_img',
+  //           supportedType: JSON.stringify([
+  //             'image/png',
+  //             'image/jpg',
+  //             'image/jpeg',
+  //             'image/svg+xml',
+  //           ]),
+  //         });
+  //         if (bgImgUploadRes.status === 'success') {
+  //           navigate('/');
+  //         }
+  //       }
+  //     } else {
+  //       console.log('Image is not uploaded');
+  //     }
+  //   } else {
+  //     if (profileImage === null) {
+  //       console.log('profile image dalo yar');
+  //     } else {
+  //       console.log('background image dalo yar');
+  //     }
+  //   }
+  // };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!profileImage || !bgImg) {
+      console.log(
+        profileImage ? 'background image dalo yar' : 'profile image dalo yar'
+      );
+      return;
+    }
     const formData = new FormData();
     formData.append('file', profileImage);
-    const res = await uploadFile(formData, {
-      dir: 'uploads/profile_img',
-      supportedType: JSON.stringify([
-        'image/png',
-        'image/jpg',
-        'image/jpeg',
-        'image/svg+xml',
-      ]),
+    const supportedType = JSON.stringify([
+      'image/png',
+      'image/jpg',
+      'image/jpeg',
+      'image/svg+xml',
+    ]);
+    const profilePath = 'uploads/profile_img';
+    const bgPath = 'uploads/background_img';
+
+    const profileUrl = await uploadFile(formData, {
+      dir: profilePath,
+      supportedType,
     });
-    console.log(res);
-    if (res.status === 'success') {
-      const response = await dispatch(
-        uploadProfileImg({ img_url: res.path, userId: user.userId })
-      );
-      console.log(response);
-    } else {
-      console.log('tehrerererr');
+    if (!profileUrl) {
+      return;
+    }
+    formData.delete('file');
+    formData.append('file', bgImg);
+    const bgUrl = await uploadFile(formData, { dir: bgPath, supportedType });
+    if (!bgUrl) {
+      return;
+    }
+
+    const response = await dispatch(
+      uploadProfileImg({
+        img_url: profileUrl,
+        bgImgUrl: bgUrl,
+        userId: user.userId,
+      })
+    );
+    if (response.meta.requestStatus === 'fulfilled') {
+      navigate('/');
     }
   };
+
   return (
     <div className="profileSetup">
       {user.isNextClicked ? (

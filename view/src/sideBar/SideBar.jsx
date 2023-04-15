@@ -1,8 +1,11 @@
-import React from "react";
-import bgimage from "../assets/codecode.jpg";
-import Avatar from "../reusableComponent/Avatar";
-import "./sidebar.css";
+import React, { useEffect } from 'react';
+import bgimage from '../assets/codecode.jpg';
+import Avatar from '../reusableComponent/Avatar';
+import './sidebar.css';
 function SideBar() {
+  useEffect(() => {
+    console.log('aa');
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -10,7 +13,7 @@ function SideBar() {
           <img className="sidebar__top__img" src={bgimage} alt="bg-coder" />
         </div>
         <div className="sidebar__top__avatar">
-          <Avatar width={"60px"} height={"60px"} />
+          <Avatar width={'60px'} height={'60px'} />
         </div>
         <div className="sidebar__top__detail">
           <div className="sidebar__top__userName">Mukul Arora</div>

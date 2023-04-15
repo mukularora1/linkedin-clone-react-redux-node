@@ -10,15 +10,15 @@ import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-axios.defaults.baseURL = 'http://localhost:4000/api/';
+axios.defaults.baseURL = 'http://localhost:5000/api/';
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

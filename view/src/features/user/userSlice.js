@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+console.log('redux');
 const initialState = {
   userId: localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user')).id
@@ -10,10 +10,11 @@ const initialState = {
     : null,
   status: 'idle',
   profileImgUrl: null,
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://localhost:5001/',
   userName: '',
   bgImgUrl: null,
   isNextClicked: true,
+  userData: null,
 };
 
 export const signIn = createAsyncThunk(
@@ -38,6 +39,15 @@ export const uploadUserName = createAsyncThunk(
     return response.data;
   }
 );
+export const getAllUserData = createAsyncThunk(
+  'userSlice/getAllUserData',
+  async (data, { dispatch }) => {
+    const response = await axios.post('get-all-user-data', data);
+    console.log('response.data', response.data);
+    dispatch(userSlice.actions.setUserData(response.data[0]));
+    return response.data;
+  }
+);
 
 const userSlice = createSlice({
   name: 'userSlice',
@@ -48,6 +58,11 @@ const userSlice = createSlice({
     },
     setIsNextClicked: (state) => {
       state.isNextClicked = !state.isNextClicked;
+    },
+    setUserData: (state, action) => {
+      console.log('set');
+      state.userData = { ...action.payload };
+      console.log('set', state.userData);
     },
   },
   extraReducers: (builder) => {
@@ -82,6 +97,16 @@ const userSlice = createSlice({
         state.status = 'succeeded';
       })
       .addCase(uploadUserName.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getAllUserData.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(getAllUserData.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+      })
+      .addCase(getAllUserData.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
