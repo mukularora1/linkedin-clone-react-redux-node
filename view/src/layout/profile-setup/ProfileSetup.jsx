@@ -30,55 +30,6 @@ function ProfileSetup() {
   const handleFileInputChange = (event) => {
     setProfileImage(event.target.files[0]);
   };
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   if (profileImage && bgImg) {
-  //     console.log(profileImage, bgImg);
-
-  //     const formData = new FormData();
-  //     formData.append('file', profileImage);
-  //     const res = await uploadFile(formData, {
-  //       dir: 'uploads/profile_img',
-  //       supportedType: JSON.stringify([
-  //         'image/png',
-  //         'image/jpg',
-  //         'image/jpeg',
-  //         'image/svg+xml',
-  //       ]),
-  //     });
-  //     console.log(res);
-  //     if (res.status === 'success') {
-  //       const response = await dispatch(
-  //         uploadProfileImg({ img_url: res.path, userId: user.userId })
-  //       );
-  //       if (response.meta.requestStatus === 'fulfilled') {
-  //         formData.delete('file');
-  //         formData.append('file', bgImg);
-  //         const bgImgUploadRes = await uploadFile(formData, {
-  //           dir: 'uploads/background_img',
-  //           supportedType: JSON.stringify([
-  //             'image/png',
-  //             'image/jpg',
-  //             'image/jpeg',
-  //             'image/svg+xml',
-  //           ]),
-  //         });
-  //         if (bgImgUploadRes.status === 'success') {
-  //           navigate('/');
-  //         }
-  //       }
-  //     } else {
-  //       console.log('Image is not uploaded');
-  //     }
-  //   } else {
-  //     if (profileImage === null) {
-  //       console.log('profile image dalo yar');
-  //     } else {
-  //       console.log('background image dalo yar');
-  //     }
-  //   }
-  // };
   const handleSubmit = async (event) => {
     event.preventDefault();
 

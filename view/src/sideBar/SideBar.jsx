@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import bgimage from '../assets/codecode.jpg';
+import { selectUser } from '../features/user/userSlice';
 import Avatar from '../reusableComponent/Avatar';
 import './sidebar.css';
 function SideBar() {
   useEffect(() => {
     console.log('aa');
   }, []);
+  const user = useSelector(selectUser);
+  console.log(user);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -16,7 +20,9 @@ function SideBar() {
           <Avatar width={'60px'} height={'60px'} />
         </div>
         <div className="sidebar__top__detail">
-          <div className="sidebar__top__userName">Mukul Arora</div>
+          <div className="sidebar__top__userName">
+            {user.userData ? user.userData.name : ''}
+          </div>
           <div className="sidebar__top__about">
             React JS | Vue JS | Node JS | Typescript | HTML | CSS | Full Stack
             Developer

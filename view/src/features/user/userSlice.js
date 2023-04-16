@@ -13,7 +13,7 @@ const initialState = {
   baseURL: 'http://localhost:5001/',
   userName: '',
   bgImgUrl: null,
-  isNextClicked: true,
+  isNextClicked: false,
   userData: null,
 };
 
@@ -60,9 +60,10 @@ const userSlice = createSlice({
       state.isNextClicked = !state.isNextClicked;
     },
     setUserData: (state, action) => {
-      console.log('set');
       state.userData = { ...action.payload };
-      console.log('set', state.userData);
+    },
+    setUserId: (state, action) => {
+      state.userId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -114,5 +115,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { setName, setIsNextClicked } = userSlice.actions;
+export const { setName, setIsNextClicked, setUserId } = userSlice.actions;
 export const selectUser = (state) => state.user;

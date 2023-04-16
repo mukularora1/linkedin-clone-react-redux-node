@@ -27,6 +27,7 @@
 .feedCard__bottom__iconWrapper {
   width: 100%;
   border-radius: 5px;
+  cursor: pointer;
 }
 .feedCard__bottom__iconWrapper:hover {
   background-color: var(--bg-default);

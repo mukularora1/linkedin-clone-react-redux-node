@@ -1,16 +1,21 @@
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SendIcon from '@mui/icons-material/Send';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import CommentLogo from '../assets/CommentLogo';
 import RepostLogo from '../assets/RepostLogo';
+import { selectUser } from '../features/user/userSlice';
 import Avatar from '../reusableComponent/Avatar';
 import './feedCard.css';
 
-import React from 'react';
-const likeClicked = (e) => {
-  console.log(e);
-};
 function FeedCard(props) {
+  const [isClicked, setIsClicked] = useState(false);
+  const likeClicked = (e) => {
+    setIsClicked((pre) => !pre);
+  };
+
+  const user = useSelector(selectUser);
   return (
     <div className="feedCard">
       <div className="feedCard__top ">
@@ -18,7 +23,9 @@ function FeedCard(props) {
           <Avatar width={'60px'} height={'60px'} />
         </div>
         <div className="feedCard__top__titleWrapper ">
-          <div className="feedCard__top__title">Mukul Arora</div>
+          <div className="feedCard__top__title">
+            {user.userData ? user.userData.name : ''}
+          </div>
           <div className="feedCard__top__subtitle">
             React | Vue js | Nodejs | Typescript
           </div>
@@ -34,11 +41,14 @@ function FeedCard(props) {
         <div className="feedCard__middle__reaction"></div>
       </div>
       <div className="feedCard__bottom">
-        <div className="feedCard__bottom__iconWrapper">
+        <div className="feedCard__bottom__iconWrapper" onClick={likeClicked}>
           <div className="feedCard__bottom__icon">
             <ThumbUpOutlinedIcon
-              sx={{ width: 30, height: 30 }}
-              onClick={likeClicked}
+              sx={
+                isClicked
+                  ? { width: 30, height: 30, fill: 'var(--color-brand)' }
+                  : { width: 30, height: 30 }
+              }
             />
             <div className="feedCard__bottom__btnTitle">Like</div>
           </div>

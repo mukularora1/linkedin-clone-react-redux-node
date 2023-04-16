@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const history = require('connect-history-api-fallback');
@@ -29,6 +30,14 @@ app.use(function (req, res, next) {
 
   // Pass to next layer of middleware
   next();
+});
+
+// Make Images "Uploads" Folder Publicly Available
+app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/img', express.static('img'));
+app.get('/', (req, res) => {
+  res.sendFile('view/dist/index.html');
 });
 
 // set up middleware

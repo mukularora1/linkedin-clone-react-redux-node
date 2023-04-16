@@ -15,6 +15,7 @@ user.createUserAccount = (data, result) => {
       result(err, null);
       return;
     }
+    console.log(res.insertId);
     result(null, {
       id: res.insertId,
       ...data,

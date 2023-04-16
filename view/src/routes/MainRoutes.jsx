@@ -33,11 +33,7 @@ const MainRoutes = [
   },
   {
     path: '/profile-setup',
-    element: (
-      <ProtectedRoute>
-        <ProfileSetup />
-      </ProtectedRoute>
-    ),
+    element: <ProfileSetup />,
   },
 
   {
